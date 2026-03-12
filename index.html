@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微信发布助手 v3 · 纯前端版</title>
+  <meta name="referrer" content="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute;opacity:0;pointer-events:none" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="appLogoBg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#07c160" />
+        <stop offset="100%" stop-color="#4f8ef7" />
+      </linearGradient>
+      <linearGradient id="appLogoPlane" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d9f3ff" />
+        <stop offset="100%" stop-color="#ffffff" />
+      </linearGradient>
+      <symbol id="app-logo-mark" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="url(#appLogoBg)" opacity="0.22" />
+        <circle cx="9.2" cy="11" r="4.2" fill="#07c160" />
+        <circle cx="15.2" cy="8.8" r="3" fill="#3ddc84" opacity="0.9" />
+        <circle cx="8.1" cy="10.1" r="0.55" fill="#0f172a" />
+        <circle cx="10.3" cy="10.1" r="0.55" fill="#0f172a" />
+        <circle cx="14.3" cy="8.2" r="0.45" fill="#0f172a" />
+        <circle cx="15.9" cy="8.2" r="0.45" fill="#0f172a" />
+        <path d="M11.8 12.4l7.8-4.1-3.8 8.6-2-2.7-2.9-1.8z" fill="url(#appLogoPlane)" stroke="#0f4fa8" stroke-width="0.6" stroke-linejoin="round" />
+        <path d="M13.8 14.2l0.2 3.1 1.6-2" stroke="#d7ebff" stroke-width="0.8" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="topbar">
+    <div class="topbar-brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><use href="#app-logo-mark" /></svg>
+      <div>
+        <div class="brand-title">微信发布助手 v3</div>
+        <div class="brand-subtitle">纯前端静态演示版 · 无微信支付 · 无后端依赖</div>
+      </div>
+    </div>
+
+    <div class="topbar-user" id="topbar-user">
+      <div class="topbar-user-avatar" id="user-avatar">微</div>
+      <div class="topbar-user-meta">
+        <div class="topbar-user-name" id="user-name">未登录</div>
+        <div class="topbar-user-role visitor" id="user-role">访客</div>
+      </div>
+      <button class="icon-button" id="btn-reset-session" title="重置会话">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <polyline points="16 17 21 12 16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-page="overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 13h8V3H3v10zm10 8h8V11h-8v10zM3 21h8v-6H3v6zm10-18v6h8V3h-8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
+          <span>概览</span>
+        </button>
+        <button class="nav-item" data-page="accounts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" /></svg>
+          <span>登录管理</span>
+        </button>
+        <button class="nav-item" data-page="publish">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><use href="#app-logo-mark" /></svg>
+          <span>发布管理</span>
+        </button>
+        <button class="nav-item" data-page="membership">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.1 6.3 6.9 1-5 4.8 1.2 6.9L12 17.7 5.8 21l1.2-6.9-5-4.8 6.9-1L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <span>会员中心</span>
+        </button>
+        <button class="nav-item" data-page="help">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><circle cx="12" cy="17" r="1" fill="currentColor" /></svg>
+          <span>使用帮助</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="support-card">
+          <div class="support-title">联系支持</div>
+          <div class="support-qr">
+            <img src="../wechat-publisher/assets/contact_me_qr.png" alt="联系二维码">
+          </div>
+          <div class="support-caption">微信扫码加群 / 联系支持</div>
+        </div>
+        <div class="side-status" id="side-status">纯前端模式 · 所有数据仅保存在浏览器本地</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="page active" id="page-overview">
+        <div class="page-header">
+          <div>
+            <h1>概览</h1>
+            <p class="page-subtitle">用于演示界面结构与交互逻辑的纯前端版本，不包含微信支付或任何后端调用。</p>
+          </div>
+          <span class="pill pill-blue">Static Frontend Demo</span>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-copy">
+            <div class="section-kicker">纯前端 v3</div>
+            <h2>保留产品视觉与交互，移除支付与后端依赖</h2>
+            <p>本版本适合做 UI 演示、产品评审、页面走查与原型交付。账号、草稿、日志、自动发布状态均由浏览器本地 mock 数据驱动。</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-jump="membership">切换身份演示</button>
+              <button class="btn" data-jump="publish">查看发布流程</button>
+            </div>
+          </div>
+          <div class="hero-grid">
+            <div class="stat-card">
+              <span class="stat-label">当前身份</span>
+              <span class="stat-value" id="overview-role">访客</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">微信账号数</span>
+              <span class="stat-value" id="overview-account-count">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">今日草稿</span>
+              <span class="stat-value" id="overview-draft-count">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">自动发布</span>
+              <span class="stat-value" id="overview-auto-status">未启用</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-grid two-col">
+          <div class="panel">
+            <div class="panel-header simple">
+              <div class="panel-title">功能边界</div>
+            </div>
+            <ul class="feature-list compact">
+              <li>无微信支付弹窗、无订单轮询、无支付二维码</li>
+              <li>无登录二维码接口、无用户鉴权接口、无数据库依赖</li>
+              <li>账号/草稿/日志/订阅状态均保存在 localStorage</li>
+              <li>支持访客 / 试用 / VIP 三档身份切换演示</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="panel-header simple">
+              <div class="panel-title">访问规则</div>
+            </div>
+            <div class="access-rules">
+              <div class="rule-item"><span class="rule-dot visitor"></span> 登录-访客：只能浏览界面，不能添加账号、手动发布、自动发布</div>
+              <div class="rule-item"><span class="rule-dot normal"></span> 试用激活-普通用户：可使用添加账号、手动发布、自动发布</div>
+              <div class="rule-item"><span class="rule-dot vip"></span> 付费套餐激活-VIP：同样可用全部功能，身份徽章黄色高亮</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-accounts">
+        <div class="page-header">
+          <div>
+            <h1>登录管理</h1>
+            <p class="page-subtitle">纯前端版以本地 mock 账号代替扫码登录，便于演示账号列表与绑定关系。</p>
+          </div>
+          <button class="btn btn-primary" id="btn-add-account">添加微信账号</button>
+        </div>
+        <div class="accounts-list" id="accounts-list"></div>
+      </section>
+
+      <section class="page" id="page-publish">
+        <div class="page-header">
+          <div>
+            <h1>发布管理</h1>
+            <p class="page-subtitle">演示当天草稿箱文章、手动发布和自动发布流程，本地日志会记录操作结果。</p>
+          </div>
+        </div>
+
+        <div class="publish-layout">
+          <div class="panel">
+            <div class="panel-header simple">
+              <div class="panel-title">当前上下文</div>
+            </div>
+            <div class="context-grid">
+              <div class="field-card">
+                <label>当前微信</label>
+                <select id="wechat-select"></select>
+              </div>
+              <div class="field-card">
+                <label>公众号</label>
+                <select id="account-select"></select>
+              </div>
+              <div class="field-card narrow">
+                <label>草稿同步范围</label>
+                <select id="sync-days-select">
+                  <option value="1">近 1 天</option>
+                  <option value="2" selected>近 2 天</option>
+                  <option value="3">近 3 天</option>
+                </select>
+              </div>
+              <div class="field-actions">
+                <button class="btn" id="btn-sync-drafts">同步草稿</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="publish-main-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">草稿箱</div>
+                <div class="panel-actions">
+                  <span class="subtle-text">已选 <b id="selected-count">0</b> 篇</span>
+                  <button class="btn btn-ghost btn-sm" id="btn-select-all">全选</button>
+                </div>
+              </div>
+              <div class="draft-list" id="draft-list"></div>
+              <div class="panel-footer actions-row">
+                <select id="publish-method">
+                  <option value="masssend">群发</option>
+                  <option value="free_publish">普通发布</option>
+                </select>
+                <button class="btn btn-primary" id="btn-manual-publish">发布选中</button>
+              </div>
+            </div>
+
+            <div class="panel auto-panel">
+              <div class="panel-header">
+                <div class="panel-title">自动发布</div>
+                <button class="switch" id="auto-toggle" aria-pressed="false"><span></span></button>
+              </div>
+              <div class="auto-settings">
+                <div class="field-inline">
+                  <label for="interval-input">检查间隔（默认 30 分钟）</label>
+                  <div class="mini-input-wrap">
+                    <input type="number" id="interval-input" min="10" max="1440" value="30">
+                    <span>分钟</span>
+                  </div>
+                </div>
+                <div class="helper-text">说明：默认每 30 分钟自动检查并发布当天草稿箱的全部文章，最小间隔为 10 分钟。</div>
+              </div>
+              <div class="log-box">
+                <div class="log-title">运行日志</div>
+                <div class="log-content" id="auto-log-content"></div>
+              </div>
+              <div class="panel-footer between">
+                <div class="subtle-text" id="next-run-info">未配置</div>
+                <button class="btn btn-sm" id="btn-run-now">立即执行</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">发布记录</div>
+              <button class="btn btn-ghost btn-sm" id="btn-clear-logs">清空日志</button>
+            </div>
+            <div class="table-wrap">
+              <table class="logs-table">
+                <thead>
+                  <tr><th>时间</th><th>公众号</th><th>文章标题</th><th>方式</th><th>状态</th></tr>
+                </thead>
+                <tbody id="publish-logs-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-membership">
+        <div class="page-header">
+          <div>
+            <h1>会员中心</h1>
+            <p class="page-subtitle">纯前端演示版不接入支付，使用本地身份切换模拟访客、试用与 VIP 状态。</p>
+          </div>
+          <span class="pill pill-green">No Payment / No Backend</span>
+        </div>
+
+        <div class="membership-grid">
+          <div class="panel current-panel">
+            <div class="panel-header simple">
+              <div class="panel-title">当前身份</div>
+            </div>
+            <div class="identity-card" id="identity-card">
+              <div class="identity-badge visitor" id="identity-badge">访客</div>
+              <h2 id="identity-title">登录-访客</h2>
+              <p id="identity-desc">已登录但未激活订阅，仅可浏览界面和帮助信息。</p>
+              <div class="identity-grid">
+                <div class="status-box">
+                  <span class="status-box-label">权限状态</span>
+                  <span class="status-box-value" id="membership-status">未开通</span>
+                </div>
+                <div class="status-box">
+                  <span class="status-box-label">到期时间</span>
+                  <span class="status-box-value" id="membership-expire">-</span>
+                </div>
+                <div class="status-box">
+                  <span class="status-box-label">剩余时长</span>
+                  <span class="status-box-value" id="membership-remaining">-</span>
+                </div>
+                <div class="status-box">
+                  <span class="status-box-label">演示说明</span>
+                  <span class="status-box-value" id="membership-note">前端本地模拟</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel action-panel">
+            <div class="panel-header simple">
+              <div class="panel-title">身份切换</div>
+            </div>
+            <div class="identity-actions">
+              <button class="identity-option visitor" data-membership="visitor">登录-访客</button>
+              <button class="identity-option normal" data-membership="normal">试用激活-普通用户</button>
+              <button class="identity-option vip" data-membership="vip">付费套餐激活-VIP</button>
+            </div>
+            <div class="helper-card">
+              <div class="helper-title">交互规则</div>
+              <ul class="feature-list compact">
+                <li>访客：禁止添加微信账号、手动发布、自动发布</li>
+                <li>普通用户：模拟 1 天试用有效期</li>
+                <li>VIP：模拟 30 天有效期，标题栏徽章黄色高亮</li>
+                <li>所有切换结果会保存在浏览器本地</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-help">
+        <div class="page-header">
+          <div>
+            <h1>使用帮助</h1>
+            <p class="page-subtitle">纯前端版保留文案和规则说明，用于静态展示与方案演示。</p>
+          </div>
+        </div>
+
+        <div class="help-stack">
+          <div class="panel">
+            <div class="panel-header simple"><div class="panel-title">快速开始</div></div>
+            <div class="steps">
+              <div class="step"><span>1</span><div><h3>切换身份</h3><p>先到会员中心选择访客、普通用户或 VIP，演示不同权限。</p></div></div>
+              <div class="step"><span>2</span><div><h3>添加 mock 账号</h3><p>普通用户和 VIP 可以在登录管理中添加本地微信账号。</p></div></div>
+              <div class="step"><span>3</span><div><h3>查看草稿与发布</h3><p>进入发布管理后，同步草稿、手动发布和自动发布都只在前端本地执行。</p></div></div>
+            </div>
+          </div>
+          <div class="panel-grid two-col">
+            <div class="panel">
+              <div class="panel-header simple"><div class="panel-title">支持范围</div></div>
+              <ul class="feature-list compact">
+                <li>支持纯前端页面演示、功能走查、视觉评审</li>
+                <li>支持本地 mock 账号、mock 草稿、mock 发布日志</li>
+                <li>不接入微信支付、不请求后端接口、不依赖 Electron API</li>
+                <li>打开本地 HTML 即可运行</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <div class="panel-header simple"><div class="panel-title">身份说明</div></div>
+              <ul class="feature-list compact">
+                <li>登录-访客：只能浏览，不能操作发布功能</li>
+                <li>试用激活-普通用户：可使用全部前端演示功能</li>
+                <li>付费套餐激活-VIP：同样可使用全部功能，身份高亮显示</li>
+                <li>到期时间与剩余时长按北京时间展示</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="account-modal">
+    <div class="modal-mask" data-close-modal></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>添加微信账号</h3>
+        <button class="icon-button" data-close-modal>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="modal-label" for="account-name-input">账号备注</label>
+        <input id="account-name-input" type="text" placeholder="如：主账号、测试账号..." maxlength="30">
+        <p class="helper-text">纯前端演示版会直接把此账号保存到浏览器本地，无需扫码登录。</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-close-modal>取消</button>
+        <button class="btn btn-primary" id="btn-save-account">保存账号</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toast-wrap"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
