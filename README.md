@@ -21,7 +21,7 @@
 
 ### Git 上传后请跳转 Release 下载
 
-- Gitee Release：https://gitee.com/gongdnq/wechat_publish/releases
+- https://github.com/DNQtech/wechat_publiser/releases/tag/v1.0.0
 
 
 ---
