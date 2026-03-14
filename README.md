@@ -8,7 +8,7 @@
 
 
 ## 界面预览
-
+![数据页](assets/sj.png)
 ![首页](assets/首页.png)
 
 ![发布页面](assets/发布页面.png)
