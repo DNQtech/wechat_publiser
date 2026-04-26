@@ -26,7 +26,7 @@
 
 ---
 ## 联系我们
-![发布页面](assets/contact_me_qr.png)
+<img width="221" height="222" alt="image" src="https://github.com/user-attachments/assets/25121bab-1da9-480c-99b6-0fbb05db3049" />
 ## 为什么值得你现在就试？
 
 - 多账号公众号管理更清晰，适合订阅号矩阵运营
