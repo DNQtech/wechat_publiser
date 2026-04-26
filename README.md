@@ -5,10 +5,16 @@
 本项目聚焦一个目标：
 **用 AI 与自动化流程，减少公众号运营中的重复劳动与人工失误。**
 
+## 收益数据
+<img width="1200" height="2670" alt="b4adc0210c333b4d977114e8e880153b" src="https://github.com/user-attachments/assets/1fde1656-abf9-42ba-8b14-2d6fdd6a80fa" />
+<img width="1200" height="2670" alt="1cb7ec2d4f3e025dc73a46c5978cffa3" src="https://github.com/user-attachments/assets/5ca3c9d0-4565-437c-a3d3-30fba058da7f" />
+<img width="1200" height="2670" alt="6e4bf9a79941e6de922c8627a6b44c73" src="https://github.com/user-attachments/assets/4611eae9-2112-4584-9fba-b7920ba9e6d6" />
 
 
 ## 界面预览
 ![数据页](assets/sj.png)
+<img width="590" height="1278" alt="8ba6eb0f1b41ab671184c87b75c60a26" src="https://github.com/user-attachments/assets/d676ec0c-70a5-4d14-9aee-734d76c2559a" />
+
 ![首页](assets/首页.png)
 
 ![发布页面](assets/发布页面.png)
