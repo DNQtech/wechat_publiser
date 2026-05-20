@@ -7,17 +7,14 @@
 
 ## 收益数据
 <img width="1200" height="2670" alt="b4adc0210c333b4d977114e8e880153b" src="https://github.com/user-attachments/assets/1fde1656-abf9-42ba-8b14-2d6fdd6a80fa" />
-<img width="1200" height="2670" alt="1cb7ec2d4f3e025dc73a46c5978cffa3" src="https://github.com/user-attachments/assets/5ca3c9d0-4565-437c-a3d3-30fba058da7f" />
-<img width="1200" height="2670" alt="6e4bf9a79941e6de922c8627a6b44c73" src="https://github.com/user-attachments/assets/4611eae9-2112-4584-9fba-b7920ba9e6d6" />
+
 
 
 ## 界面预览
-![数据页](assets/sj.png)
+
 <img width="1269" height="814" alt="image" src="https://github.com/user-attachments/assets/825c8785-3a8b-4f7c-8156-b408bd84ac1a" />
 
-![首页](assets/首页.png)
 
-![发布页面](assets/发布页面.png)
 
 ---
 
