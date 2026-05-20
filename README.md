@@ -13,7 +13,7 @@
 
 ## 界面预览
 ![数据页](assets/sj.png)
-<img width="590" height="1278" alt="8ba6eb0f1b41ab671184c87b75c60a26" src="https://github.com/user-attachments/assets/d676ec0c-70a5-4d14-9aee-734d76c2559a" />
+<img width="1269" height="814" alt="image" src="https://github.com/user-attachments/assets/825c8785-3a8b-4f7c-8156-b408bd84ac1a" />
 
 ![首页](assets/首页.png)
 
