@@ -4,7 +4,7 @@
 
 本项目聚焦一个目标：
 **用 AI 与自动化流程，减少公众号运营中的重复劳动与人工失误。**
-
+官网:https://mediaflow.daniu7.cn/
 ## 收益数据
 <img width="1200" height="2670" alt="b4adc0210c333b4d977114e8e880153b" src="https://github.com/user-attachments/assets/1fde1656-abf9-42ba-8b14-2d6fdd6a80fa" />
 
